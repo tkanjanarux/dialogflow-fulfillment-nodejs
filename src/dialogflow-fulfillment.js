@@ -274,8 +274,6 @@ class WebhookClient {
       this.client.addActionsOnGoogle_(response.serialize());
     } else if (response instanceof Suggestion && this.existingSuggestion_(response.platform)) {
       this.existingSuggestion_(response.platform).addReply_(response.replies[0]);
-    } else if (response instanceof Payload && this.existingPayload_(response.platform)) {
-      throw new Error(`Payload response for ${response.platform} already defined.`);
     } else if (response instanceof RichResponse) {
       this.responseMessages_.push(response);
     } else {
